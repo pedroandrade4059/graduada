@@ -4,14 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parabéns Catarina 👩‍⚕️🎓</title>
+
+  <!-- Fonte manuscrita para a fita -->
+  <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #fff0f5, #ffffff);
-      text-align: center;
-      color: #444;
+   body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;       /* impede scroll na página */
+  height: 100vh;          /* altura total da janela */
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #fff0f5, #ffffff);
+  text-align: center;
+  color: #444;
+  margin-left: 260px;     /* espaço para a fita */
+}
+
+
+
+  .fita {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;              /* altura total da janela */
+  overflow-y: auto;           /* scroll só dentro da fita */
+  background-color: #fff8f0;
+  color: #a15300;
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 1.2rem;
+  padding: 60px 20px 40px 20px;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  line-height: 1.9rem;
+  border-right: 2px solid #d6a05c;
+
+  /* Para evitar corte de conteúdo */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+
+.fita::-webkit-scrollbar {
+  width: 3px;
+}
+.fita::-webkit-scrollbar-thumb {
+  background-color: #d6a05c;
+  border-radius: 5px;
+}
+
+
+
+    .fita::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background-color: #e0d6c8;
+      border-bottom: 2px solid #b99870;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1);
+      z-index: -1;
     }
 
     h1 {
@@ -25,12 +84,6 @@
       font-size: 1.4em;
       margin: 20px auto;
       max-width: 700px;
-    }
-
-    .flores {
-      font-size: 2.5rem;
-      animation: girar 6s linear infinite;
-      margin: 20px;
     }
 
     .mensagem-extra {
@@ -60,11 +113,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes girar {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     .fotos {
       margin-top: 40px;
     }
@@ -74,44 +122,112 @@
       border-radius: 12px;
       margin: 10px;
       transition: transform 0.3s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .fotos img:hover {
       transform: scale(1.05);
     }
+
+    /* Elementos a cair */
+    .elemento-cair {
+      position: fixed;
+      top: -2rem;
+      font-size: 2rem;
+      animation: cair 5s linear forwards;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .carrossel {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.carrossel img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carrossel img.ativo {
+  opacity: 1;
+}
+
+
+    @keyframes cair {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
+<div class="fita">
+  Amor, ❤️<br><br>
+  Não poderia estar mais contente, feliz, orgulhoso e tantos outros adjetivos que possam expressar o que estou a sentir neste momento.<br><br>
+  Passados 4 anos de esforço, luta e muitos momentos difíceis, tanto na universidade quanto fora dela, conseguiste!!!<br><br>
+  Conseguiste algo que poucas pessoas conseguem, e que tu, com todo o mérito, mereces.<br><br>
+  Eu que te acompanhei desde praticamente o início, sei bem o quão dedicada, responsável e apaixonada és pelo trabalho que fazes, e isso não está ao nível de qualquer um.<br><br>
+  Ouvir as histórias que me contavas sobre as pessoas que ajudaste e cuidaste só demonstra a vocação que tens nesta área tão bonita.<br><br>
+  Finalmente, enfermeira. Mas não uma enfermeira qualquer, és a minha enfermeira, a enfermeira que amo, e que vi a se transformar numa mulher ainda melhor, dia após dia.<br><br>
+  Sei que serás uma excelente profissional, assim como és uma pessoa maravilhosa.<br><br>
+  São quase 3 anos contigo, e este é o fim de mais um ciclo. Para o futuro que te aguarda, tenho a certeza que será tão brilhante como o teu coração.<br><br>
+  Estarei sempre ao teu lado, para te apoiar em qualquer que seja a tua decisão.<br><br>
+  Para a minha melhor amiga, companheira, mulher e enfermeira da minha vida…<br><br>
+  Amo-te.<br><br>
+  Do teu engenheiro de merda,<br>
+  Andradjiiii 💗
+</div>
 
-  <div class="flores">🌸🌺🌼💐🌷🌻</div>
+<h1>Parabéns Catarina!💗💗💗💗</h1>
 
-  <h1>Parabéns Catarina! 👩‍⚕️🎓</h1>
+<div class="carrossel">
+  <img src="https://via.placeholder.com/300x400?text=Foto+1" alt="Foto 1">
+  <img src="https://via.placeholder.com/300x400?text=Foto+2" alt="Foto 2">
+  <img src="https://via.placeholder.com/300x400?text=Foto+3" alt="Foto 3">
+</div>
 
-  <p>
-    Hoje celebramos o teu enorme feito — terminaste o curso de Enfermagem!<br>
-    Foram anos de dedicação, coragem e esforço — e eu não podia estar mais orgulhoso.<br>
-    És uma inspiração como pessoa e agora também como enfermeira 💖
-  </p>
-
-  <button class="botao" onclick="mostrarMensagem()">Clica aqui 💌</button>
-  <div class="mensagem-extra" id="mensagem">
-    Catarina, és incrível.<br>
-    Obrigado por me deixares fazer parte da tua vida. Amo-te muito ❤️<br>
-    — Pedro
-  </div>
-
-  <div class="flores">🌸🌺🌼💐🌷🌻</div>
-
-  <div class="fotos">
-    <!-- Substitui estes URLs por links reais de fotos -->
-    <img src="https://via.placeholder.com/250x350?text=Catarina+1" alt="Foto 1">
-    <img src="https://via.placeholder.com/250x350?text=Catarina+2" alt="Foto 2">
-  </div>
 
   <script>
     function mostrarMensagem() {
       document.getElementById("mensagem").style.display = "block";
     }
+
+    // Criar corações e flores a cair
+    setInterval(() => {
+      const simbolos = ['💖', '🌸', '🌷', '💗'];
+      const elemento = document.createElement('div');
+      elemento.classList.add('elemento-cair');
+      elemento.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
+      elemento.style.left = Math.random() * 100 + 'vw';
+      document.body.appendChild(elemento);
+
+      setTimeout(() => {
+        elemento.remove();
+      }, 5000);
+    }, 300);
+
+      const imagens = document.querySelectorAll('.carrossel img');
+  let indice = 0;
+
+  function mostrarProximaImagem() {
+    imagens[indice].classList.remove('ativo');
+    indice = (indice + 1) % imagens.length;
+    imagens[indice].classList.add('ativo');
+  }
+
+  imagens[indice].classList.add('ativo');
+  setInterval(mostrarProximaImagem, 3000); // muda de 3 em 3 segundos
   </script>
 
 </body>
