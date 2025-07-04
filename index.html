@@ -273,14 +273,23 @@
 
 
    const toggleBtn = document.getElementById('toggleFita');
-  const fita = document.getElementById('fitaContainer');
-  let visible = true;
+const fita = document.getElementById('fitaContainer');
+const musica = document.getElementById('musica');
+let visible = false;
 
-  toggleBtn.addEventListener('click', () => {
-    visible = !visible;
-    fita.style.display = visible ? 'block' : 'none';
-    //document.body.style.marginLeft = visible ? '260px' : '0'; // ajusta o layout
-  });
+toggleBtn.addEventListener('click', () => {
+  visible = !visible;
+  fita.style.display = visible ? 'block' : 'none';
+
+  if (visible) {
+    musica.play().catch((e) => {
+      console.log('Autoplay bloqueado pelo browser:', e);
+    });
+  } else {
+    musica.pause();
+  }
+});
+
   </script>
 
 </body>
