@@ -161,8 +161,8 @@
 
     .carrossel {
   position: relative;
-  width: 90vw; /* usa 90% da largura da janela */
-  max-width: 500px;
+  width: 90vw;
+  max-width: 360px; /* ligeiramente mais estreito, ideal para verticais */
   height: auto;
   margin: 40px auto;
   border-radius: 12px;
@@ -172,17 +172,20 @@
 }
 
 .carrossel img {
-  width: 100%;
-  height: auto;
+  max-height: 80vh;      /* Nunca ultrapassa 80% da altura do ecrã */
+  width: auto;           /* Ajusta largura automaticamente */
+  max-width: 100%;       /* Garante que não ultrapassa a largura do container */
   display: none;
   object-fit: contain;
   transition: opacity 1s ease-in-out;
   border-radius: 12px;
+  margin: 0 auto;
 }
 
 .carrossel img.ativo {
   display: block;
 }
+
 
 
 
@@ -195,6 +198,11 @@
   </style>
 </head>
 <body>
+    <audio id="musica" autoplay loop>
+  <source src="song/Ordinary.mp3" type="audio/mpeg" />
+  O teu browser não suporta áudio.
+</audio>
+
     <div id="fitaContainer" class="fita" style="display: none;">
   <div class="fita">
   Amor,<br><br>
@@ -222,11 +230,14 @@
 
 
 <div class="carrossel">
-  <img src="images/1.jpeg" class="ativo" />
-  <img src="images/2.jpeg" />
-  <img src="images/3.jpeg" />
-  <img src="images/4.jpeg" />
-  <img src="images/5.jpeg" />
+  <img src="images/2.jpeg" class="ativo" />
+  <img src="images/6.jpeg" />
+  <img src="images/7.jpeg" />
+  <img src="images/8.jpeg" />
+  <img src="images/9.jpeg" />
+  <img src="images/10.jpeg" />
+  <img src="images/11.jpeg" />
+  <img src="images/12.jpeg" />
 </div>
 
 
