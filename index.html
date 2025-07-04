@@ -12,13 +12,33 @@
    body {
   margin: 0;
   padding: 0;
-  overflow: hidden;       /* impede scroll na página */
-  height: 100vh;          /* altura total da janela */
+  overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to bottom, #fff0f5, #ffffff);
   text-align: center;
   color: #444;
-  margin-left: 260px;     /* espaço para a fita */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+
+
+.botao-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 2000;
+  padding: 10px 14px;
+  background-color: #d63384;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.botao-toggle:hover {
+  background-color: #bf2c74;
 }
 
 
@@ -172,8 +192,9 @@
   </style>
 </head>
 <body>
-<div class="fita">
-  Amor, ❤️<br><br>
+    <div id="fitaContainer" class="fita" style="display: none;">
+  <div class="fita">
+  Amor,<br><br>
   Não poderia estar mais contente, feliz, orgulhoso e tantos outros adjetivos que possam expressar o que estou a sentir neste momento.<br><br>
   Passados 4 anos de esforço, luta e muitos momentos difíceis, tanto na universidade quanto fora dela, conseguiste!!!<br><br>
   Conseguiste algo que poucas pessoas conseguem, e que tu, com todo o mérito, mereces.<br><br>
@@ -188,8 +209,14 @@
   Do teu engenheiro de merda,<br>
   Andradjiiii 💗
 </div>
+</div>
 
-<h1>Parabéns Catarina!💗💗💗💗</h1>
+
+
+<h1>Enfermeira Catarina💉</h1>
+
+<button id="toggleFita" class="botao-toggle">💌</button>
+
 
 <div class="carrossel">
   <img src="https://via.placeholder.com/300x400?text=Foto+1" alt="Foto 1">
@@ -228,6 +255,17 @@
 
   imagens[indice].classList.add('ativo');
   setInterval(mostrarProximaImagem, 3000); // muda de 3 em 3 segundos
+
+
+   const toggleBtn = document.getElementById('toggleFita');
+  const fita = document.getElementById('fitaContainer');
+  let visible = true;
+
+  toggleBtn.addEventListener('click', () => {
+    visible = !visible;
+    fita.style.display = visible ? 'block' : 'none';
+    document.body.style.marginLeft = visible ? '260px' : '0'; // ajusta o layout
+  });
   </script>
 
 </body>
