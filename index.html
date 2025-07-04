@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parabéns Catarina 👩‍⚕️🎓</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffffff);
+      text-align: center;
+      color: #444;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 3em;
+      margin-top: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.4em;
+      margin: 20px auto;
+      max-width: 700px;
+    }
+
+    .flores {
+      font-size: 2.5rem;
+      animation: girar 6s linear infinite;
+      margin: 20px;
+    }
+
+    .mensagem-extra {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #007744;
+      display: none;
+    }
+
+    .botao {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .botao:hover {
+      background-color: #bf2c74;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes girar {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .fotos {
+      margin-top: 40px;
+    }
+
+    .fotos img {
+      width: 250px;
+      border-radius: 12px;
+      margin: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .fotos img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flores">🌸🌺🌼💐🌷🌻</div>
+
+  <h1>Parabéns Catarina! 👩‍⚕️🎓</h1>
+
+  <p>
+    Hoje celebramos o teu enorme feito — terminaste o curso de Enfermagem!<br>
+    Foram anos de dedicação, coragem e esforço — e eu não podia estar mais orgulhoso.<br>
+    És uma inspiração como pessoa e agora também como enfermeira 💖
+  </p>
+
+  <button class="botao" onclick="mostrarMensagem()">Clica aqui 💌</button>
+  <div class="mensagem-extra" id="mensagem">
+    Catarina, és incrível.<br>
+    Obrigado por me deixares fazer parte da tua vida. Amo-te muito ❤️<br>
+    — Pedro
+  </div>
+
+  <div class="flores">🌸🌺🌼💐🌷🌻</div>
+
+  <div class="fotos">
+    <!-- Substitui estes URLs por links reais de fotos -->
+    <img src="https://via.placeholder.com/250x350?text=Catarina+1" alt="Foto 1">
+    <img src="https://via.placeholder.com/250x350?text=Catarina+2" alt="Foto 2">
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      document.getElementById("mensagem").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
