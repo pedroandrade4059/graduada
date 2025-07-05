@@ -168,7 +168,7 @@
 <div class="carrossel">
   <button class="seta" onclick="mudarSlide(-1)">💉</button>
 
-  <img src="images/IMG_2489.jpeg" class="ativo" />
+  <!--<img src="images/IMG_2489.jpeg" class="ativo" />-->
   <img src="images/2.jpeg" />
   <img src="images/6.jpeg" />
   <img src="images/7.jpeg" />
@@ -177,18 +177,11 @@
   <img src="images/10.jpeg" />
   <img src="images/11.jpeg" />
   <img src="images/12.jpeg" />
-  <button class="seta" onclick="mudarSlide(1)">💉</button>
+  <!--<button class="seta" onclick="mudarSlide(1)">💉</button>-->
 </div>
 
 <script>
-  const imagens = document.querySelectorAll(".carrossel img");
-  let slideAtual = 0;
 
-  function mudarSlide(direcao) {
-    imagens[slideAtual].classList.remove("ativo");
-    slideAtual = (slideAtual + direcao + imagens.length) % imagens.length;
-    imagens[slideAtual].classList.add("ativo");
-  }
 
   // Corações e flores a cair
   setInterval(() => {
@@ -204,6 +197,7 @@
     }, 5000);
   }, 300);
 
+  //fita e msucia start
   const toggleBtn = document.getElementById('toggleFita');
   const fita = document.getElementById('fitaContainer');
   const musica = document.getElementById('musica');
@@ -224,27 +218,20 @@
   //swipe telemvoel
 
   // Swipe em telemóvel
-let startX = 0;
-let endX = 0;
+const imagens = document.querySelectorAll(".carrossel img");
+let slideAtual = 0;
 
-const carrossel = document.querySelector('.carrossel');
+function mudarSlide(direcao = 1) {
+  imagens[slideAtual].classList.remove("ativo");
+  slideAtual = (slideAtual + direcao + imagens.length) % imagens.length;
+  imagens[slideAtual].classList.add("ativo");
+}
 
-carrossel.addEventListener('touchstart', (e) => {
-  startX = e.touches[0].clientX;
-});
+// Muda de imagem automaticamente a cada 4 segundos
+setInterval(() => {
+  mudarSlide(1);
+}, 4000);
 
-carrossel.addEventListener('touchend', (e) => {
-  endX = e.changedTouches[0].clientX;
-  const diff = endX - startX;
-
-  if (Math.abs(diff) > 50) { // deslize mínimo
-    if (diff > 0) {
-      mudarSlide(-1); // deslizou para a direita → imagem anterior
-    } else {
-      mudarSlide(1);  // deslizou para a esquerda → imagem seguinte
-    }
-  }
-});
 
 </script>
 
