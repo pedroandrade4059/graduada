@@ -95,22 +95,26 @@
       display: block;
     }
 
-    .seta {
-      background-color: rgba(0, 0, 0, 0.3);
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      font-size: 24px;
-      cursor: pointer;
-      border-radius: 50%;
-      margin: 0 10px;
-      z-index: 10;
-      transition: background 0.3s;
-    }
+ .seta {
+  background: linear-gradient(145deg, #d0f0dc, #b1e3c3);
+  color: #155724;
+  border: 1px solid #a3d9b0;
+  padding: 14px 20px;
+  font-size: 1.6rem;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 0 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15), inset 0 2px 4px rgba(255,255,255,0.4);
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
 
-    .seta:hover {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+.seta:hover {
+  background: linear-gradient(145deg, #b1e3c3, #d0f0dc);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2), inset 0 2px 6px rgba(255,255,255,0.5);
+  transform: scale(1.05);
+}
+
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
@@ -162,7 +166,8 @@
 <button id="toggleFita" class="botao-toggle">💌</button>
 
 <div class="carrossel">
-  <button class="seta" onclick="mudarSlide(-1)">💊</button>
+  <button class="seta" onclick="mudarSlide(-1)">💉</button>
+
   <img src="images/IMG_2489.jpeg" class="ativo" />
   <img src="images/2.jpeg" />
   <img src="images/6.jpeg" />
@@ -172,7 +177,7 @@
   <img src="images/10.jpeg" />
   <img src="images/11.jpeg" />
   <img src="images/12.jpeg" />
-  <button class="seta" onclick="mudarSlide(1)">🎓</button>
+  <button class="seta" onclick="mudarSlide(1)">💉</button>
 </div>
 
 <script>
@@ -187,7 +192,7 @@
 
   // Corações e flores a cair
   setInterval(() => {
-    const simbolos = ['💖', '🌸', '🌷', '💗'];
+    const simbolos = ['💖', '🌸', '🌷', '💗' , '💝' , '🌹'];
     const elemento = document.createElement('div');
     elemento.classList.add('elemento-cair');
     elemento.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
@@ -212,8 +217,6 @@
       musica.play().catch((e) => {
         console.log('Autoplay bloqueado:', e);
       });
-    } else {
-      musica.pause();
     }
   });
 </script>
