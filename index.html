@@ -4,93 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catarina</title>
-
-  <!-- Fonte manuscrita para a fita -->
   <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet">
-
   <style>
-   body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #fff0f5, #ffffff);
-  text-align: center;
-  color: #444;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffffff);
+      text-align: center;
+      color: #444;
+    }
 
+    .botao-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 2000;
+      padding: 10px 14px;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
 
+    .botao-toggle:hover {
+      background-color: #bf2c74;
+    }
 
-
-.botao-toggle {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 2000;
-  padding: 10px 14px;
-  background-color: #d63384;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.botao-toggle:hover {
-  background-color: #bf2c74;
-}
-
-
-
-  .fita {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 240px;
-  height: 100vh;              /* altura total da janela */
-  overflow-y: auto;           /* scroll só dentro da fita */
-  background-color: #fff8f0;
-  color: #a15300;
-  font-family: 'La Belle Aurore', cursive;
-  font-size: 1.2rem;
-  padding: 60px 20px 40px 20px;
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  line-height: 1.9rem;
-  border-right: 2px solid #d6a05c;
-
-  /* Para evitar corte de conteúdo */
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-
-
-.fita::-webkit-scrollbar {
-  width: 3px;
-}
-.fita::-webkit-scrollbar-thumb {
-  background-color: #d6a05c;
-  border-radius: 5px;
-}
-
-
-
-    .fita::before {
-      content: '';
-      position: absolute;
-      top: -30px;
+    .fita {
+      position: fixed;
+      top: 0;
       left: 0;
-      width: 100%;
-      height: 30px;
-      background-color: #e0d6c8;
-      border-bottom: 2px solid #b99870;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1);
-      z-index: -1;
+      width: 240px;
+      height: 100vh;
+      overflow-y: auto;
+      background-color: #fff8f0;
+      color: #a15300;
+      font-family: 'La Belle Aurore', cursive;
+      font-size: 1.2rem;
+      padding: 60px 20px 40px 20px;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      line-height: 1.9rem;
+      border-right: 2px solid #d6a05c;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    .fita::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .fita::-webkit-scrollbar-thumb {
+      background-color: #d6a05c;
+      border-radius: 5px;
     }
 
     h1 {
@@ -100,32 +72,44 @@
       animation: fadeIn 2s ease-in-out;
     }
 
-    p {
-      font-size: 1.4em;
-      margin: 20px auto;
-      max-width: 700px;
+    .carrossel {
+      position: relative;
+      width: 90vw;
+      max-width: 450px;
+      margin: 40px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .mensagem-extra {
-      margin-top: 30px;
-      font-size: 1.2em;
-      color: #007744;
+    .carrossel img {
       display: none;
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
     }
 
-    .botao {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 1rem;
-      background-color: #d63384;
+    .carrossel img.ativo {
+      display: block;
+    }
+
+    .seta {
+      background-color: rgba(0, 0, 0, 0.3);
       color: white;
       border: none;
-      border-radius: 8px;
+      padding: 10px 15px;
+      font-size: 24px;
       cursor: pointer;
+      border-radius: 50%;
+      margin: 0 10px;
+      z-index: 10;
+      transition: background 0.3s;
     }
 
-    .botao:hover {
-      background-color: #bf2c74;
+    .seta:hover {
+      background-color: rgba(0, 0, 0, 0.5);
     }
 
     @keyframes fadeIn {
@@ -133,23 +117,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .fotos {
-      margin-top: 40px;
-    }
-
-    .fotos img {
-      width: 250px;
-      border-radius: 12px;
-      margin: 10px;
-      transition: transform 0.3s ease-in-out;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .fotos img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Elementos a cair */
     .elemento-cair {
       position: fixed;
       top: -2rem;
@@ -158,36 +125,6 @@
       pointer-events: none;
       z-index: 10;
     }
-
-    .carrossel {
-  position: relative;
-  width: 90vw;
-  max-width: 360px; /* ligeiramente mais estreito, ideal para verticais */
-  height: auto;
-  margin: 40px auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  overflow: hidden;
-}
-
-.carrossel img {
-  max-height: 80vh;      /* Nunca ultrapassa 80% da altura do ecrã */
-  width: auto;           /* Ajusta largura automaticamente */
-  max-width: 100%;       /* Garante que não ultrapassa a largura do container */
-  display: none;
-  object-fit: contain;
-  transition: opacity 1s ease-in-out;
-  border-radius: 12px;
-  margin: 0 auto;
-}
-
-.carrossel img.ativo {
-  display: block;
-}
-
-
-
 
     @keyframes cair {
       to {
@@ -198,13 +135,13 @@
   </style>
 </head>
 <body>
-    <audio id="musica" autoplay loop>
+
+<audio id="musica" autoplay loop>
   <source src="song/Ordinary.mp3" type="audio/mpeg" />
   O teu browser não suporta áudio.
 </audio>
 
-    <div id="fitaContainer" class="fita" style="display: none;">
-  <div class="fita">
+<div id="fitaContainer" class="fita" style="display: none;">
   Amor,<br><br>
   Não poderia estar mais contente, feliz, orgulhoso e tantos outros adjetivos que possam expressar o que estou a sentir neste momento.<br><br>
   Passados 4 anos de esforço, luta e muitos momentos difíceis, tanto na universidade quanto fora dela, conseguiste!!!<br><br>
@@ -220,17 +157,14 @@
   Do teu engenheiro de merda,<br>
   Andradjiiii 💗
 </div>
-</div>
 
-
-
-<h1>Enfermeira Catarina💉</h1>
-
+<h1>Enfermeira Catarina 💉</h1>
 <button id="toggleFita" class="botao-toggle">💌</button>
 
-
 <div class="carrossel">
-  <img src="images/2.jpeg" class="ativo" />
+  <button class="seta" onclick="mudarSlide(-1)">💊</button>
+  <img src="images/IMG_2489.jpeg" class="ativo" />
+  <img src="images/2.jpeg" />
   <img src="images/6.jpeg" />
   <img src="images/7.jpeg" />
   <img src="images/8.jpeg" />
@@ -238,60 +172,51 @@
   <img src="images/10.jpeg" />
   <img src="images/11.jpeg" />
   <img src="images/12.jpeg" />
-    <img src="images/IMG_2489.jpeg" />
+  <button class="seta" onclick="mudarSlide(1)">🎓</button>
 </div>
 
+<script>
+  const imagens = document.querySelectorAll(".carrossel img");
+  let slideAtual = 0;
 
-  <script>
-    function mostrarMensagem() {
-      document.getElementById("mensagem").style.display = "block";
+  function mudarSlide(direcao) {
+    imagens[slideAtual].classList.remove("ativo");
+    slideAtual = (slideAtual + direcao + imagens.length) % imagens.length;
+    imagens[slideAtual].classList.add("ativo");
+  }
+
+  // Corações e flores a cair
+  setInterval(() => {
+    const simbolos = ['💖', '🌸', '🌷', '💗'];
+    const elemento = document.createElement('div');
+    elemento.classList.add('elemento-cair');
+    elemento.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
+    elemento.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(elemento);
+
+    setTimeout(() => {
+      elemento.remove();
+    }, 5000);
+  }, 300);
+
+  const toggleBtn = document.getElementById('toggleFita');
+  const fita = document.getElementById('fitaContainer');
+  const musica = document.getElementById('musica');
+  let visible = false;
+
+  toggleBtn.addEventListener('click', () => {
+    visible = !visible;
+    fita.style.display = visible ? 'block' : 'none';
+
+    if (visible) {
+      musica.play().catch((e) => {
+        console.log('Autoplay bloqueado:', e);
+      });
+    } else {
+      musica.pause();
     }
-
-    // Criar corações e flores a cair
-    setInterval(() => {
-      const simbolos = ['💖', '🌸', '🌷', '💗'];
-      const elemento = document.createElement('div');
-      elemento.classList.add('elemento-cair');
-      elemento.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
-      elemento.style.left = Math.random() * 100 + 'vw';
-      document.body.appendChild(elemento);
-
-      setTimeout(() => {
-        elemento.remove();
-      }, 5000);
-    }, 300);
-
-    const imagens = document.querySelectorAll('.carrossel img');
-  let indice = 0;
-
-  function mostrarProximaImagem() {
-    imagens[indice].classList.remove('ativo');
-    indice = (indice + 1) % imagens.length;
-    imagens[indice].classList.add('ativo');
-  }
-
-  setInterval(mostrarProximaImagem, 3000); // muda de imagem a cada 3 segundos
-
-
-   const toggleBtn = document.getElementById('toggleFita');
-const fita = document.getElementById('fitaContainer');
-const musica = document.getElementById('musica');
-let visible = false;
-
-toggleBtn.addEventListener('click', () => {
-  visible = !visible;
-  fita.style.display = visible ? 'block' : 'none';
-
-  if (visible) {
-    musica.play().catch((e) => {
-      console.log('Autoplay bloqueado pelo browser:', e);
-    });
-  } else {
-    musica.pause();
-  }
-});
-
-  </script>
+  });
+</script>
 
 </body>
 </html>
